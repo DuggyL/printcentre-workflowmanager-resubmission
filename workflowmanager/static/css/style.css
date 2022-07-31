@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.flashes h4 {
+    line-height: 2;
+}
+
+.btn-small {
+    margin-right: 6px;
+}
+
+.collapsible-header .col strong {
+    margin: 6px;
+    line-height: 42px;
+}
+
+.tasks-card {
+    margin-top: 100px;
+    padding: 15px 0px 15px 0px;
+}
+
+.wrapper {
+    padding-left: 300px;
+}
+
+.logo {
+    font-size: 70px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.navbar li {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+h4 {
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.flash {
+    font-weight: 500;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.card-panel {
+    margin-top: 75px;
+    margin-bottom: 50px;
+    background-color: rgb(236, 236, 236);
+}
+
+button {
+    margin: 15px;
+}
+
+.profile {
+    margin-top: 100px;
+}
+
+span {
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.task-company {
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.task-title {
+    font-weight: 900;
+    font-size: 24px;
+}

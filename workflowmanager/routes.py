@@ -32,12 +32,12 @@ def add_task():
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added", category='success')
         return redirect(url_for("get_tasks"))
-    # customers = list(Customer.query.order_by(Customer.company_name).all())
-    return render_template("add_task.html") # customers=customers
+    
+    customers = mongo.db.customers.find().sort("company_name", 1)
+    return render_template("add_task.html", customers=customers) 
 
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
-    # customers = list(Customer.query.order_by(Customer.company_name).all())
     if request.method == "POST":
         is_urgent = "on" if request.form.get("urgent") else "off"
         submit = {
@@ -59,7 +59,8 @@ def edit_task(task_id):
         return redirect(url_for("get_tasks"))
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    return render_template("edit_task.html", task=task) # customers=customers
+    customers = mongo.db.customers.find().sort("company_name", 1)
+    return render_template("edit_task.html", task=task, customers=customers) 
 
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
@@ -119,7 +120,6 @@ def login():
 
     return render_template("login.html")
 
-
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -137,3 +137,25 @@ def logout():
     flash("You have been logged out", category='success')
     session.pop("user")
     return redirect(url_for("login"))
+
+@app.route("/add_customer", methods=["GET", "POST"])
+def add_customer():
+    customers = list(mongo.db.customers.find().sort("company_name", 1))
+    if request.method == "POST":
+        customer = {
+            "company_name": request.form.get("company_name"),
+            "customer_name": request.form.get("customer_name"),
+            "contact_no": request.form.get("contact_no"),
+            "email": request.form.get("email"),
+            "address": request.form.get("address"),
+        }
+        mongo.db.customers.insert_one(customer)
+        flash("Customer Successfully added", category='success')
+        return redirect(url_for("add_customer"))
+    return render_template("customer.html", customers=customers)
+
+@app.route("/delete_customer/<customer_id>")
+def delete_customer(customer_id):
+    mongo.db.customers.delete_one({"_id": ObjectId(customer_id)})
+    flash("Customer Successfully Deleted", category='success')
+    return redirect(url_for("add_customer"))

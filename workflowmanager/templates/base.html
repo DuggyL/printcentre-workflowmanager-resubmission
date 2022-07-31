@@ -22,7 +22,7 @@
 					<li><a href="{{ url_for('get_tasks') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="#">Profile</a></li>
-                        <li><a href="#">Add Task</a></li>
+                        <li><a href="{{ url_for('add_task') }}">Add Task</a></li>
                         <li><a href="#">Customers</a></li>
                         <li><a href="#">Log Out</a></li>
                     {% else %}
@@ -39,7 +39,7 @@
             <li><a href="#">Home</a></li>
             {% if session.user %}
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Add Task</a></li>
+                <li><a href="{{ url_for('add_task') }}">Add Task</a></li>
                 <li><a href="#">Customers</a></li>
                 <li><a href="#">Log Out</a></li>
             {% else %}

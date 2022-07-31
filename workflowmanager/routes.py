@@ -32,8 +32,40 @@ def add_task():
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added", category='success')
         return redirect(url_for("get_tasks"))
-    customers = list(Customer.query.order_by(Customer.company_name).all())
-    return render_template("add_task.html", customers=customers)
+    # customers = list(Customer.query.order_by(Customer.company_name).all())
+    return render_template("add_task.html") # customers=customers
+
+@app.route("/edit_task/<task_id>", methods=["GET", "POST"])
+def edit_task(task_id):
+    # customers = list(Customer.query.order_by(Customer.company_name).all())
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("urgent") else "off"
+        submit = {
+            "job_title": request.form.get("job_title"),
+            "company_name": request.form.get("company_name"),
+            "job_description": request.form.get("job_description"),
+            "quantity": request.form.get("quantity"),
+            "materials": request.form.get("materials"),
+            "printing": request.form.get("printing"),
+            "finishing": request.form.get("finishing"),
+            "delivery": request.form.get("delivery"),
+            "delivery_date": request.form.get("delivery_date"),
+            "delivery_address": request.form.get("delivery_address"),
+            "urgent": is_urgent,
+            "created_by": session["user"]
+        }
+        mongo.db.tasks.replace_one({"_id": ObjectId(task_id)}, submit)
+        flash("Task Successfully Updated", category='success')
+        return redirect(url_for("get_tasks"))
+
+    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    return render_template("edit_task.html", task=task) # customers=customers
+
+@app.route("/delete_task/<task_id>")
+def delete_task(task_id):
+    mongo.db.tasks.delete_one({"_id": ObjectId(task_id)})
+    flash("Task Successfully Deleted", category='success')
+    return redirect(url_for("get_tasks"))
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -98,7 +130,6 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
-
 
 @app.route("/logout")
 def logout():

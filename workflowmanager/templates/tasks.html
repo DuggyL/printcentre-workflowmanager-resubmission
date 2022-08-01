@@ -4,17 +4,18 @@
     <div class="tasks-card row z-depth-1 blue-grey lighten-5">
         <div class="col s12">
             <ul class="collapsible expandable popout">
-            {% for task in tasks %}
+                {% for task in tasks %}
                 <li>
                     <div class="collapsible-header blue darken-4 white-text">
-                        <div class="col s12 m8 l10 task-company">{{ task.company_name }}</div>
-                        <div class="col s12 m4 l2">                  
+                        <div class="col s12 m8 l10 task-company">{{ task.company_name }}
                             {% if task.urgent == "on" %}
-                            <i class="material-icons large"  data-tooltip="URGENT!">info</i>
+                            <i class="material-icons small white-text task-icons" data-tooltip="URGENT!">new_releases</i>
                             {% endif %}
-                                {% if session.user|lower == task.created_by|lower %}
-                                <a href="{{ url_for('edit_task', task_id=task._id) }}"><i class="material-icons small white-text">border_color</i></a></a>
-                                <a href="{{ url_for('delete_task', task_id=task._id) }}"><i class="material-icons small white-text">assignment_turned_in</i></a>
+                        </div>
+                        <div class="col s12 m4 l2">                  
+                            {% if session.user|lower == task.created_by|lower %}
+                            <a href="{{ url_for('edit_task', task_id=task._id) }}"><i class="material-icons small white-text task-icons">border_color</i></a></a>
+                            <a href="{{ url_for('delete_task', task_id=task._id) }}"><i class="material-icons small white-text task-icons">assignment_turned_in</i></a>
                             {% endif %}
                         </div>
                     </div>

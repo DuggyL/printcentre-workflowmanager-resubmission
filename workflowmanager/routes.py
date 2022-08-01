@@ -139,7 +139,7 @@ def logout():
 @app.route("/get_customers")
 def get_customers():
     customers = list(mongo.db.customers.find().sort("company_name", 1))
-    return render_template("customer.html", customers=customers)
+    return render_template("customers.html", customers=customers)
 
 @app.route("/add_customer", methods=["GET", "POST"])
 def add_customer():
@@ -177,3 +177,9 @@ def delete_customer(customer_id):
     mongo.db.customers.delete_one({"_id": ObjectId(customer_id)})
     flash("Customer Successfully Deleted", category='success')
     return redirect(url_for("get_customers"))
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    customers = list(mongo.db.customers.find({"$text": {"$search": query}}))
+    return render_template("customers.html", customers=customers)

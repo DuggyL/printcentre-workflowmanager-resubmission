@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% for customer in customers %}
     <div class="row card-panel">
-        <h4 class="center-align">Add Customer</h4>
-        <form class="col s12" method="POST" action="{{ url_for('add_customer') }}">
+        <h4 class="center-align">Edit Customer</h4>
+        <form class="col s12" method="POST" action="{{ url_for('edit_customer', customer_id=customer._id) }}">
             <!-- Company and customer name fields -->
             <div class="row">
                 <div class="input-field col s6">
@@ -38,9 +39,9 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">room</i>
-                    <textarea id="address" name="address" class="materialize-textarea" 
+                    <textarea id="address" name="address" class="materialize-textarea"  value="{{- customer.address -}}"
                         minlength="5" maxlength="100" required>
-                    {{ customer.address }}
+                    {{- customer.address -}}
                     </textarea>
                     <label for="address">Address</label>
                 </div>
@@ -48,7 +49,7 @@
             <!-- Submit and cancel buttons -->
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('customers') }}" class="btn-large red text-shadow">Cancel 
+                    <a href="{{ url_for('get_customers') }}" class="btn-large red text-shadow">Cancel 
                         <i class="material-icons right">exit_to_app</i>
                     </a>
                     <button class="btn-large waves-effect waves-light" type="submit">Submit
@@ -58,5 +59,6 @@
             </div>
         </form>
     </div>
+    {% endfor %}
       
 {% endblock %}

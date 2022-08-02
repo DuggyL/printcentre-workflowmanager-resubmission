@@ -57,8 +57,7 @@ def edit_task(task_id):
         flash("Task Successfully Updated", category='success')
         return redirect(url_for("get_tasks"))
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    customers = mongo.db.customers.find().sort("company_name", 1)
-    return render_template("edit_task.html", task=task, customers=customers) 
+    return render_template("edit_task.html", task=task) 
 
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
@@ -164,9 +163,9 @@ def edit_customer(customer_id):
             "customer_name": request.form.get("customer_name"),
             "contact_no": request.form.get("contact_no"),
             "email": request.form.get("email"),
-            "address": request.form.get("address"),
+            "address": request.form.get("address")
         }
-        mongo.db.tasks.replace_one({"_id": ObjectId(customer_id)}, submit)
+        mongo.db.customers.replace_one({"_id": ObjectId(customer_id)}, submit)
         flash("Customer Successfully Updated", category='success')
         return redirect(url_for("get_customers"))
     customers = mongo.db.customers.find().sort("company_name", 1)

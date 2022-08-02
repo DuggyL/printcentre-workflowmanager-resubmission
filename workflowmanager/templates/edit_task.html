@@ -9,9 +9,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">business_center</i>
                     <select id="company_name" name="company_name" class="validate" required>
-                        {% for customer in customers %}
-                            <option value="{{ task.company_name }}">{{ task.company_name }}</option>
-                        {% endfor %}
+                        <option value="{{ task.company_name }}">{{ task.company_name }}</option>
                     </select>
                     <label for="company_name">Customer</label>
                 </div>

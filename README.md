@@ -1,108 +1,229 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1><b>Printcentre Workflow/Task Manager Web Application</b></h1>
 
-Welcome Dustin Li,
+[View the live project here.](https://printcentre-workflow-project.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This Python and Data-Centric Development project aims to design a simple task manager for Printcentre Wales (my current employer), a commercial printing company. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+<img src=images/am-i-responsive.png>
 
-## Gitpod Reminders
+## Purpose & Goals
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Printcentre management currently uses desktop software to manage customers’ databases. This software can only be accessed by the management team. 
 
-`python3 -m http.server`
+Print production starting from admin handled customer’s information and jobs specifications. When a job is booked, the admin creates a job docket containing customer details and work instructions. 
+The docket passes to the pre-press department where they prepare artwork for production and to the Printroom/ Finishing department till job completion. 
+Finally, the docket passes back to the admin to organise invoice, payment and delivery. 
 
-A blue button should appear to click: _Make Public_,
+A single docket passes through multiple departments, if the docket is incorrect, outdated or misplaced, it can lead to mistakes during the production. 
+To correct the problem, the production team requests a new / updated job docket from the admin which can be time-consuming and costly. 
+If all the staff have access to the same information on the job docket at the same time I believe it can improve efficiency and reduce mistakes.
 
-Another blue button should appear to click: _Open Browser_.
+The purpose & goals of this project are to create a simple web application that allows all staff to access a simple task management system containing work instructions and customer details. 
+The web application can be accessed on all devices, where admin or staff can read, add, edit and delete.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## User Experience (UX)
 
-A blue button should appear to click: _Make Public_,
+-   ### New, Returning and Frequent Visitor Goals
 
-Another blue button should appear to click: _Open Browser_.
+    - As a User, I want to register and create a user profile.
+    - As a User, I want to easily navigate across the site so that I can find the information I need.
+    - As a User, I want to see messages responding to my interaction with the web application i.e. logging in, logging out, registering, adding, edit or delete.
+    - As a User, I want the ability to add, edit and delete jobs.
+    - As a User, I want customer’s details and work instructions available to me. 
+    - As a User, I want a responsive website so that I can access it on different devices.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Design
+-   #### Colour Scheme
+    -   The two main primary colours used are Black & White
+    -   Black text for readability on white background.
+    
+The reason I chose these 2 combinations of colours for my project is to keep the page clean and readable and maintain professionalism. 
 
-To log into the Heroku toolbelt CLI:
+-   #### Typography
+    -   I used Roboto throughout the webpage to maintain cohesion across the project. Using different font weights to convey emphasis and importance on some of the content. It has friendly features and great letter-spacing that leads to ease of communication.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Responsive Design, Features & CRUD Operations
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+<img src=images/main-page.png>
 
-------
+-   ### Navigation Bar
+    -   Featured on all pages, the full responsive navigation bar includes links to the Logo, tasks, add tasks, add customer, log in and register page and is identical on each page to allow for easy navigation.
+    -   This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button.
+    -   The navigation bar displays different links depending on whether the user is logged in, logged out.
 
-## Release History
+-   ### Home Page
+    -   Tasks display on the landing page. Users can interact with the collapsible to see more in-depth details of the work instruction.
+    -   Unregistered and logout do not have edit or delete button available to them but can still interact with work instructions collapsible.  
+    -   Only users who created the task can see buttons that allow users to edit or delete.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+<img src=images/edit-task.png>
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+-   ### Edit Tasks Page
+    -   Edit task page allows users to edit the tasks database, users can cancel the edit by clicking on the cancel button.
+    -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
+    -   The previous value will fill the form, avoiding the need for users to re-input the data. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+<img src=images/validation.png>
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+-   ### Add Task Page
+    -   Allow users to add to the database and display created tasks on the main page, users can cancel the adding by clicking on the cancel button.
+    -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
+    -   It uses a combination of PSQL (containing customer database) and mongo database (where tasks will be saved to).
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+<img src=images/customer-page.png>
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+-   ### Customer Page
+    -   Table display list of existing customers
+    -   Users can add/ delete customers to or from the database 
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+-   ### Profile Page
+    -   A page is dedicated to the user when they are logged in. Currently, blank and more features are implemented at later project stages.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### CRUD Operations
+Using the CRUD's four basic functions (create, read, update and delete), here are the design and features:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+-   The ability to create tasks and customer database
+-   The ability to read/check work instructions, and customer information
+-   The ability to update/edit jobs work instructions
+-   The ability to delete tasks, assignments and schedule
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Defensive Design
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+<img src=images/defensive.png>
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+-   ### Form Validation
+    -   Form validation has been added to every form to ensure all required information is included before submission.
+    -   If incorrect data is input a warning red line indicates the data invalid i.e no letters in strictly number field, minimum and maximum character depend on expected data.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+<img src=images/logoff.png>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+-   ### Unauthorised Page
+    -   Unregister or logged out users cannot access to add tasks, profiles or customer page
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+<img src=images/login.png>
 
-------
+## Future Features
+-   I would like to add more features to the profile page, like tasks history.
+-   Add search and edit function to customer page
+-   The ability for users to change their username and password
+-   Improvement of user experience to task collapsible 
+-   The ability to add comments to a task is collapsible while the task is still active
 
-## FAQ about the uptime script
+## Technologies Used
 
-**Why have you added this script?**
+### Languages Used
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+-   HTML5
+-   CSS3
+-   Javascript
+-   Python
 
-**How will this affect me?**
+### Frameworks, Libraries & Programs Used
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+1. [Materialize](https://materializecss.com)
+    - Materialize was used to assist with the responsiveness and styling of the website.
+1. [Flask v2.1](https://flask.palletsprojects.com/en/2.1.x)
+    - Flask framework is used to assist in the building of the web application.
+1. [MongoDB](https://www.mongodb.com)
+    - Cloud-hosted database service used to store tasks/ work instruction information and staff login details.
+1. [PSQL](https://www.postgresql.org)
+    - Cloud-hosted database service used to store customer's information
+1. [Google Fonts:](https://fonts.google.com)
+    - Google fonts were used to import the 'Roboto font family', which is used on all pages throughout the project.
+1. [jQuery:](https://jquery.com)
+    - jQuery came with Materialize
+1. [Git](https://git-scm.com)
+    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+1. [GitHub:](https://github.com)
+    - GitHub is used to store the projects code after being pushed from Git.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Testing
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+The JSHint Lighthouse, W3C Markup Validator and W3C CSS Validator Services were used to validate the project to ensure there were no errors in the project.
 
-**So….?**
+-   JSHint Found 9 functions with same 2 warnings regarding browser extension. [link](images/JSHint.png)
+-   HTML Validator found 1 error from Materialize jQuery preset. [link](images/html-checker.png) 
+-   CSS Validator found 1 error from Materialize css preset. [link](images/css-checker.png) 
+-   Python PEP8 online found 2 error regarding expected lines
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### Testing User Stories from User Experience (UX) Section
 
-**Can I opt out?**
+-   #### ### New, Returning and Frequent Visitor Goals
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+    1. As a User, I want to register and create a user profile.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+        - The site allow user to register to the task manager using register page and set up their own profile
 
-**Anything more?**
+    2. As a User, I want to easily navigate across the site so that I can find the information I need.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+        - The site has been designed to easily navigate. At the top of each page there is a clean navigation bar, each link describes what the page they will end up at clearly.
 
----
+    3. As a User, I want to see messages responding to my interaction with the web application i.e. logging in, logging out, registering, adding, edit or delete.
 
-Happy coding!
+        - If users correctly or successfully input data, a green success flash will appear with appropriate messages and flash red if failed or input data incorrectly.
+    
+    4. As a User, I want the ability to add, edit and delete jobs.
+
+        - Users can add, edit and delete tasks/customer from the database.
+
+    5. As a User, I want customer’s details and work instructions available to me. 
+
+        - All the created tasks are display on the main page and customer information on customer page.
+
+    6. As a User, I want a responsive website so that I can access it on different devices.
+        
+        - The forms and tasks collaspible and resize to small screen size on different devices.
+
+### Further Testing
+
+-   The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
+-   Testing was done to ensure that all pages were linking correctly.
+-   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
+
+### Known Bugs/Error
+
+<img src=images/internal-server-error.png>
+
+At the late stage of the project, I found the above server error after uploading to Heroku server. With my lack of experience and technical skills, I cannot find the source of the problems and fix the problems before the deadline of the project. The website works perfectly using a development server.
+
+# Deployment
+
+### GitHub Pages
+The project was deployed to GitHub Pages using the following steps...
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/).
+2. At the top of the Repository locate the "Settings".
+3. Click on "Pages" will open "GitHub Pages" Section.
+4. Under "Source", click the dropdown called "None" and select "Master Branch".
+5. The page will automatically refresh.
+6. At the top near github header to locate the now published site [link](https://github.com/DuggyL/workflow-milestone-project-3/).
+
+### Forking the GitHub Repository
+
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps:-
+
+1. Log in to GitHub and locate the GitHub Repository.
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Making a Local Clone
+1. Log in to GitHub and locate the GitHub Repository.
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied.
+
+# Credits
+
+### Code
+-   This project is heavily based on Code Institute task manager tutorials.
+-   Python Website Full Tutorial - Flask, Authentication, Databases & More by Tech With Tim [link](https://www.youtube.com/watch?v=dam0GPOAvVI&list=PLDpvVzk1kZl_xWyRhgVk5o2QUIaW_WyQc&index=53&t=7552s)
+-   How to Use Databases With SQLAlchemy by Codemy.com [link](https://www.youtube.com/watch?v=Q2QmST-cSwc&list=PLDpvVzk1kZl_xWyRhgVk5o2QUIaW_WyQc&index=54)
+
+### Media
+-   All icons from Materialize
+-   Images used in readme were screen shot from W3 Validators and Am I Responsive.
+
+### Acknowledgements
+-   My Mentor [Narender Singh](https://github.com/nar3nd3r) for helpful feedback regarding design, features and functionality.

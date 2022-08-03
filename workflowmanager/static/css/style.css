@@ -65,7 +65,7 @@ span {
 
 .task-company {
     font-weight: 900;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .task-title {
@@ -75,5 +75,5 @@ span {
 
 .task-icons {
     position: relative;
-    top: 3px
+    top: 6px
 }

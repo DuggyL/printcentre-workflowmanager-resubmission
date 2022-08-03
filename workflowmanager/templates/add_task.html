@@ -6,7 +6,7 @@
         <form class="col s12" method="POST" action="{{ url_for('add_task') }}">
             <!-- Company and customer name fields -->
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">business_center</i>
                     <select id="company_name" name="company_name" class="validate" required>
                         <option disabled selected>Choose Company</option>
@@ -16,7 +16,7 @@
                     </select>
                     <label for="company_name">Customer</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="job_title" name="job_title" 
                         minlength="5" maxlength="30" type="text" class="validate" required>
@@ -25,7 +25,7 @@
             </div>
             <!-- Job description fields -->
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s12 m12">
                     <i class="material-icons prefix">assignment</i>
                     <textarea id="job_description" name="job_description" class="materialize-textarea" 
                         minlength="5" maxlength="100" required></textarea>
@@ -34,13 +34,13 @@
             </div>
             <!-- Quantity and materials fields -->
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">playlist_add</i>
                     <input id="quantity" name="quantity" pattern="^[0-9]{1,10}$"
                         minlength="1" maxlength="10" type="text" class="validate" required>
                     <label for="quantity">Quantity</label>
                  </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">layers</i>
                     <input id="materials" name="materials" 
                         minlength="3" maxlength="30" type="text" class="validate" required>
@@ -49,13 +49,13 @@
             </div>
             <!-- Printing and finishing fields -->
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">format_color_fill</i>
                     <input id="printing" name="printing" 
                         minlength="5" maxlength="30" type="text" class="validate" required>
                     <label for="printing">Printing</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">map</i>
                     <input id="finishing" name="finishing" 
                         minlength="5" maxlength="30" type="text" class="validate" required>
@@ -64,13 +64,13 @@
             </div>
             <!-- Delivery method and delivery date fields -->
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">local_shipping</i>
                     <input id="delivery" name="delivery" 
                         minlength="5" maxlength="30" type="text" class="validate" required>
                     <label for="delivery">Delivery</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">date_range</i>
                     <input id="delivery_date" name="delivery_date" type="text" class="datepicker validate" required>
                     <label for="delivery_date">Delivery Date</label>
@@ -78,7 +78,7 @@
             </div>
             <!-- Delivery address fields -->
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s12 m12">
                     <i class="material-icons prefix">room</i>
                     <textarea id="delivery_address" name="delivery_address" class="materialize-textarea" 
                         minlength="5" maxlength="100" required></textarea>
@@ -87,7 +87,7 @@
             </div>
             <!-- Urgent switch -->
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <div class="switch">
                         <i class="material-icons prefix">priority_high</i>
                         <label for="urgent">
@@ -98,6 +98,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <!-- Submit and cancel buttons -->
             <div class="row">
                 <div class="col s12 center-align">

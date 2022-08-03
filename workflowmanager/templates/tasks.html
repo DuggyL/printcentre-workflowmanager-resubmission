@@ -7,15 +7,25 @@
                 {% for task in tasks %}
                 <li>
                     <div class="collapsible-header blue darken-4 white-text">
-                        <div class="col s12 m8 l10 task-company">{{ task.company_name }}
+                        <div class="col s6 m8 l10 task-company">
+                            {{ task.company_name }}
                             {% if task.urgent == "on" %}
                             <i class="material-icons small white-text task-icons" data-tooltip="URGENT!">new_releases</i>
                             {% endif %}
                         </div>
-                        <div class="col s12 m4 l2">                  
+                        <div class="col s6 m4 l2">                  
                             {% if session.user|lower == task.created_by|lower %}
                             <a href="{{ url_for('edit_task', task_id=task._id) }}"><i class="material-icons small white-text task-icons">border_color</i></a></a>
-                            <a href="{{ url_for('delete_task', task_id=task._id) }}"><i class="material-icons small white-text task-icons">assignment_turned_in</i></a>
+                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Done</a>
+                            <div id="modal1" class="modal">
+                                <div class="modal-content black-text">
+                                    <h4>Task Completed!</h4>
+                                    <h5><em>I have successfully completed the tasks</em></h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{{ url_for('delete_task', task_id=task._id) }}" class="modal-close waves-effect waves-green btn-flat">Done</a>
+                                </div>
+                            </div>
                             {% endif %}
                         </div>
                     </div>

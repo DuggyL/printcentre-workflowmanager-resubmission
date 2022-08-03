@@ -1,32 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="center">
-        <a href="{{ url_for('add_customer') }}" class="btn-large red lighten-1">Add Customer</a>
-    </div>
-
-    <div class="row card-panel grey lighten-5">
+    <!-- Search Customers -->
+    <div class="row card-panel blue-grey lighten-5">
+        <h4 class="center-align">Customers</h4>
         <form action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row valign-wrapper center-align">
-                <div class="input-field col s12 m8">
-                    <i class="material-icons light-blue-text text-darken-4">search</i>
+                <div class="input-field col s12 m10">
                     <input type="text" name="query" id="query" minlength="3" class="validate" required>
                     <label for="query">Search</label>
                 </div>
                 <div class="col s12 m4">
                     <a href="{{ url_for('get_customers') }}" class="red btn text-shadow">Reset</a>
-                    <button type="submit" class="light-blue darken-1 btn text-shadow">
-                        <i class="material-icons left">search</i>Search
+                    <button type="submit" class="btn waves-effect waves-light">
+                        <i class="large material-icons">search</i>
                     </button>
                 </div>
             </div>
         </form>
-    </div>
-
-    <!-- Customer list -->
-    <div class="row card-panel white">
+        <!-- Customers list -->
         {% if customers|length > 0 %}
-        <table class="highlight">
+        <table>
             <thead>
             <tr>
                 <th>Company Name</th>
@@ -50,10 +44,15 @@
             {% endfor %}
             </tbody>
         </table>
+        <br>
+        <div class="center">
+            <a href="{{ url_for('add_customer') }}" class="btn-large lighten-1">Add Customer
+                <i class="material-icons right">add_circle_outline</i>
+            </a>
+        </div>
         {% else %}
-        <h3 class="red-text text-darken-4 center-align">No Results Found</h3>
+        <h3 class="center-align">No Results Found</h3>
         {% endif %}
     </div>
       
 {% endblock %}
-

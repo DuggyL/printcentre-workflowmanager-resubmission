@@ -1,6 +1,7 @@
 <h1><b>Printcentre Workflow Manager Project Resubmission</b></h1>
 
 [View the live project here.](https://printcentre-workflowmanager.herokuapp.com/)
+<br />
 [Github link of previous failed milestone project 3 submission.](https://github.com/DuggyL/workflow-milestone-project-3/)
 
 This Python and Data-Centric Development project aims to design a simple task manager for Printcentre Wales (my current employer), a commercial printing company. 
@@ -45,7 +46,9 @@ The reason I chose these 2 combinations of colours for my project is to keep the
 
 ## Responsive Design, Features & CRUD Operations
 
+<details>
 <img src=images/homepage.png>
+</details>
 
 -   ### Navigation Bar
     -   Featured on all pages, the full responsive navigation bar includes links to the Logo, tasks, add tasks, add customer, log in and register page and is identical on each page to allow for easy navigation.

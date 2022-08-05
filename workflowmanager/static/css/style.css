@@ -77,3 +77,7 @@ span {
     position: relative;
     top: 6px
 }
+
+body {
+    letter-spacing: 0px;
+}

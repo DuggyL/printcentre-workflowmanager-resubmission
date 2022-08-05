@@ -4,6 +4,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from workflowmanager import app, mongo
 
+
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
@@ -35,7 +36,7 @@ def add_task():
         flash("Task Successfully Added", category='success')
         return redirect(url_for("get_tasks"))
     customers = mongo.db.customers.find().sort("company_name", 1)
-    return render_template("add_task.html", customers=customers) 
+    return render_template("add_task.html", customers=customers)
 
 
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
@@ -61,7 +62,7 @@ def edit_task(task_id):
         flash("Task Successfully Updated", category='success')
         return redirect(url_for("get_tasks"))
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    return render_template("edit_task.html", task=task) 
+    return render_template("edit_task.html", task=task)
 
 
 @app.route("/delete_task/<task_id>")
@@ -109,12 +110,12 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                    existing_user["password"], request.form.get("password")):
+                        session["user"] = request.form.get("username").lower()
+                        flash("Welcome, {}".format(
+                            request.form.get("username")))
+                        return redirect(url_for(
+                            "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password", category='error')

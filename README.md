@@ -176,9 +176,10 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
 The JSHint Lighthouse, W3C Markup Validator and W3C CSS Validator Services were used to validate the project to ensure there were no errors in the project.
 
 -   JSHint Found 9 functions with same 2 warnings regarding browser extension. [link](images/JSHint.png)
--   HTML Validator. [link](images/html-checker.png) 
+-   HTML Validator found no error. [link](images/html-checker.png) 
 -   CSS Validator found 1 error from Materialize css preset. [link](images/css-checker.png) 
--   Python PEP8 online found 2 error regarding expected lines
+-   Python PEP8 online found no error. [link](images/pep8-checker.png) 
+-   Lighthouse report. [link](images/lighthouse.png) 
 
 ### Testing User Stories from User Experience (UX) Section
 

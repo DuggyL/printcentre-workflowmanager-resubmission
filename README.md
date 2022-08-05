@@ -68,6 +68,13 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
     -   Unregistered and logout users do not have edit or delete button/icon available to them but can still interact with work instructions collapsible.  
     -   Only users who created the task can see buttons that allow users to edit or done.
 
+<img src=images/log-in.png>
+<img src=images/register.png>
+
+-   ### Log In and Register
+    -   New users can register new account using register page.
+    -   Existing users can log in to their account using log in page.
+
 <img src=images/add-task.png>
 
 <img src=images/add-task-mobile.png>
@@ -119,7 +126,7 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
 
 <img src=images/log-in-error.png>
 
--   ### Success and Error Flash message
+-   ### Success and Error Flash Message
     -   Flash message will appear at the of the page in response to user activity. For example, if you input the wrong password, an error message will appear letting user know the reason for the error. (Green for success and red for error).
 
 <img src=images/defensive-wrong-input.png>

@@ -1,6 +1,5 @@
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
-from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from workflowmanager import app, mongo
@@ -8,11 +7,14 @@ from workflowmanager import app, mongo
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
+    '''Display tasks'''
     tasks = list(mongo.db.tasks.find())
     return render_template("tasks.html", tasks=tasks)
 
+
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
+    '''Add task functionality'''
     if request.method == "POST":
         is_urgent = "on" if request.form.get("urgent") else "off"
         task = {
@@ -35,8 +37,10 @@ def add_task():
     customers = mongo.db.customers.find().sort("company_name", 1)
     return render_template("add_task.html", customers=customers) 
 
+
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
+    '''Edit task functionality'''
     if request.method == "POST":
         is_urgent = "on" if request.form.get("urgent") else "off"
         submit = {
@@ -59,14 +63,18 @@ def edit_task(task_id):
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     return render_template("edit_task.html", task=task) 
 
+
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
+    '''Delete task functionality'''
     mongo.db.tasks.delete_one({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted", category='success')
     return redirect(url_for("get_tasks"))
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    '''Register account functionality'''
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -89,8 +97,10 @@ def register():
 
     return render_template("register.html")
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    '''Login account functionality'''
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -99,12 +109,12 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(
+                        request.form.get("username")))
+                    return redirect(url_for(
+                        "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password", category='error')
@@ -117,9 +127,11 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
+    '''Display user's profile page'''
+    # find session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -128,20 +140,27 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+
 @app.route("/logout")
 def logout():
-    # remove user from session cookie
+    '''Remove user from user's session cookie'''
     flash("You have been logged out", category='success')
+    # remove user's session cookies
     session.pop("user")
     return redirect(url_for("login"))
 
+
 @app.route("/get_customers")
 def get_customers():
+    '''Display customers list'''
+    # find company's information from db
     customers = list(mongo.db.customers.find().sort("company_name", 1))
     return render_template("customers.html", customers=customers)
 
+
 @app.route("/add_customer", methods=["GET", "POST"])
 def add_customer():
+    '''Add customer functionality'''
     if request.method == "POST":
         customer = {
             "company_name": request.form.get("company_name"),
@@ -155,8 +174,10 @@ def add_customer():
         return redirect(url_for("get_customers"))
     return render_template("add_customer.html")
 
+
 @app.route("/edit_customer/<customer_id>", methods=["GET", "POST"])
 def edit_customer(customer_id):
+    '''Edit customer functionality'''
     if request.method == "POST":
         submit = {
             "company_name": request.form.get("company_name"),
@@ -171,14 +192,18 @@ def edit_customer(customer_id):
     customers = mongo.db.customers.find().sort("company_name", 1)
     return render_template("edit_customer.html", customers=customers)
 
+
 @app.route("/delete_customer/<customer_id>")
 def delete_customer(customer_id):
+    '''Delete customer functionality'''
     mongo.db.customers.delete_one({"_id": ObjectId(customer_id)})
     flash("Customer Successfully Deleted", category='success')
     return redirect(url_for("get_customers"))
 
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    '''Search functionality'''
     query = request.form.get("query")
     customers = list(mongo.db.customers.find({"$text": {"$search": query}}))
     return render_template("customers.html", customers=customers)

@@ -1,6 +1,6 @@
-<h1><b>Printcentre Workflow/Task Manager Web Application</b></h1>
+<h1><b>Printcentre Workflow Manager Project Resubmission</b></h1>
 
-[View the live project here.](https://printcentre-workflow-project.herokuapp.com/)
+[View the live project here.](https://printcentre-workflowmanager.herokuapp.com/)
 
 This Python and Data-Centric Development project aims to design a simple task manager for Printcentre Wales (my current employer), a commercial printing company. 
 
@@ -44,7 +44,7 @@ The reason I chose these 2 combinations of colours for my project is to keep the
 
 ## Responsive Design, Features & CRUD Operations
 
-<img src=images/main-page.png>
+<img src=images/homepage.png>
 
 -   ### Navigation Bar
     -   Featured on all pages, the full responsive navigation bar includes links to the Logo, tasks, add tasks, add customer, log in and register page and is identical on each page to allow for easy navigation.
@@ -63,18 +63,32 @@ The reason I chose these 2 combinations of colours for my project is to keep the
     -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
     -   The previous value will fill the form, avoiding the need for users to re-input the data. 
 
-<img src=images/validation.png>
+<img src=images/add-task.png>
 
 -   ### Add Task Page
     -   Allow users to add to the database and display created tasks on the main page, users can cancel the adding by clicking on the cancel button.
     -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
     -   It uses a combination of PSQL (containing customer database) and mongo database (where tasks will be saved to).
 
-<img src=images/customer-page.png>
+<img src=images/customers.png>
 
--   ### Customer Page
+-   ### Customers Page
     -   Table display list of existing customers
     -   Users can add/ delete customers to or from the database 
+
+<img src=images/add-customer.png>
+
+-   ### Add Customer Page
+    -   Table display list of existing customers
+    -   Users can add/ delete customers to or from the database 
+
+<img src=images/edit-customer.png>
+
+-   ### Edit Customer Page
+    -   Table display list of existing customers
+    -   Users can add/ delete customers to or from the database 
+
+<img src=images/profile.png>
 
 -   ### Profile Page
     -   A page is dedicated to the user when they are logged in. Currently, blank and more features are implemented at later project stages.
@@ -95,12 +109,10 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
     -   Form validation has been added to every form to ensure all required information is included before submission.
     -   If incorrect data is input a warning red line indicates the data invalid i.e no letters in strictly number field, minimum and maximum character depend on expected data.
 
-<img src=images/logoff.png>
-
 -   ### Unauthorised Page
     -   Unregister or logged out users cannot access to add tasks, profiles or customer page
 
-<img src=images/login.png>
+<img src=images/log-in.png>
 
 ## Future Features
 -   I would like to add more features to the profile page, like tasks history.
@@ -108,6 +120,8 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
 -   The ability for users to change their username and password
 -   Improvement of user experience to task collapsible 
 -   The ability to add comments to a task is collapsible while the task is still active
+
+<img src=images/log-in-error.png>
 
 ## Technologies Used
 
@@ -126,8 +140,6 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
     - Flask framework is used to assist in the building of the web application.
 1. [MongoDB](https://www.mongodb.com)
     - Cloud-hosted database service used to store tasks/ work instruction information and staff login details.
-1. [PSQL](https://www.postgresql.org)
-    - Cloud-hosted database service used to store customer's information
 1. [Google Fonts:](https://fonts.google.com)
     - Google fonts were used to import the 'Roboto font family', which is used on all pages throughout the project.
 1. [jQuery:](https://jquery.com)
@@ -179,12 +191,6 @@ The JSHint Lighthouse, W3C Markup Validator and W3C CSS Validator Services were 
 -   The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
 -   Testing was done to ensure that all pages were linking correctly.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
-
-### Known Bugs/Error
-
-<img src=images/internal-server-error.png>
-
-At the late stage of the project, I found the above server error after uploading to Heroku server. With my lack of experience and technical skills, I cannot find the source of the problems and fix the problems before the deadline of the project. The website works perfectly using a development server.
 
 # Deployment
 

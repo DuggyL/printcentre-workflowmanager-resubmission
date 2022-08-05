@@ -1,60 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <!-- Search Customers -->
-    <div class="row card-panel blue-grey lighten-5">
-        <h4 class="center-align">Customers</h4>
-        <form action="{{ url_for('search') }}" method="post" class="col s12">
-            <div class="row valign-wrapper center-align">
-                <div class="input-field col s12 m10">
-                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                    <label for="query">Search</label>
-                </div>
-                <div class="col s12 m4">
-                    <a href="{{ url_for('get_customers') }}" class="red btn text-shadow">
-                        <i class="large material-icons">clear</i>
-                    </a>
-                    <button type="submit" class="btn waves-effect waves-light">
-                        <i class="large material-icons">search</i>
-                    </button>
-                </div>
+<!-- search customers -->
+<div class="row card-panel blue-grey lighten-5">
+    <h4 class="center-align">Customers</h4>
+    <form action="{{ url_for('search') }}" method="post" class="col s12">
+        <div class="row valign-wrapper center-align">
+            <div class="input-field col s12 m10">
+                <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                <label for="query">Search</label>
             </div>
-        </form>
-        <!-- Customers list -->
-        {% if customers|length > 0 %}
-        <table>
-            <thead>
-            <tr>
-                <th>Company Name</th>
-                <th>Customer Name</th>
-                <th>Contact No</th>
-                <th>Email</th>
-                <th>Address</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for customer in customers %}
-            <tr>
-                <td>{{ customer.company_name }}</td>
-                <td>{{ customer.customer_name }}</td>
-                <td>{{ customer.contact_no }}</td>
-                <td>{{ customer.email }}</td>
-                <td>{{ customer.address }}</td>
-                <td><a href="{{ url_for('edit_customer', customer_id=customer._id) }}"><i class="material-icons small black-text">border_color</i></a></td>
-                <td><a href="{{ url_for('delete_customer', customer_id=customer._id) }}"><i class="material-icons small black-text">cancel</i></a></td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <br>
-        <div class="center">
-            <a href="{{ url_for('add_customer') }}" class="btn-large lighten-1">Add Customer
-                <i class="material-icons right">add_circle_outline</i>
-            </a>
+            <div class="col s12 m4">
+                <a href="{{ url_for('get_customers') }}" class="red btn text-shadow">
+                    <i class="large material-icons">clear</i>
+                </a>
+                <button type="submit" class="btn waves-effect waves-light">
+                    <i class="large material-icons">search</i>
+                </button>
+            </div>
         </div>
-        {% else %}
-        <h3 class="center-align">No Results Found</h3>
-        {% endif %}
+    </form>
+    <!-- customers list -->
+    {% if customers|length > 0 %}
+    <table>
+        <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Customer Name</th>
+            <th>Contact No</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.company_name }}</td>
+            <td>{{ customer.customer_name }}</td>
+            <td>{{ customer.contact_no }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.address }}</td>
+            <td><a href="{{ url_for('edit_customer', customer_id=customer._id) }}"><i class="material-icons small black-text">border_color</i></a></td>
+            <td><a href="{{ url_for('delete_customer', customer_id=customer._id) }}"><i class="material-icons small black-text">cancel</i></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <!-- add customer button-->
+    <div class="center">
+        <a href="{{ url_for('add_customer') }}" class="btn-large lighten-1">Add Customer
+            <i class="material-icons right">add_circle_outline</i>
+        </a>
     </div>
+    <br>
+    {% else %}
+    <h3 class="center-align">No Results Found</h3>
+    {% endif %}
+</div>
       
 {% endblock %}

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="shortcut icon" href="#">
     {% block styles %}
     {% endblock %}
     <title>Printcentre Wales Workflow Manager</title>
@@ -13,7 +14,7 @@
 
 <body>
 	<header>
-        <!-- Navbar -->
+        <!-- navbar -->
 		<nav>
 			<div class="nav-wrapper black darken-1 navbar">
 				<a href="{{ url_for('get_tasks') }}" class="brand-logo logo center">Printcentre Wales</a>
@@ -33,7 +34,7 @@
 			</div>
 		</nav>
 
-        <!-- Mobile sidenav -->
+        <!-- mobile sidenav -->
 		<ul class="sidenav navbar" id="mobile-demo">
             <li><h4 class="center-align black-text">Printcentre</h4></li>
             <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
@@ -50,7 +51,7 @@
 	</header>
 
     <div class="flash">
-        <!-- Flash messages -->
+        <!-- flash messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for catergory, message in messages %}

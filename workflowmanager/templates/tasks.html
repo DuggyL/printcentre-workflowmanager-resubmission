@@ -1,64 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="tasks-card row z-depth-1 blue-grey lighten-5">
-        <div class="col s12">
-            <ul class="collapsible expandable popout">
-                {% for task in tasks %}
-                <li>
-                    <div class="collapsible-header blue darken-4 white-text">
-                        <div class="col s6 m8 l10 task-company">
-                            {{ task.company_name }}
-                            {% if task.urgent == "on" %}
-                            <i class="material-icons small white-text task-icons" data-tooltip="URGENT!">new_releases</i>
-                            {% endif %}
-                        </div>
-                        <div class="col s6 m4 l2">                  
-                            {% if session.user|lower == task.created_by|lower %}
-                            <a href="{{ url_for('edit_task', task_id=task._id) }}"><i class="material-icons small white-text task-icons">border_color</i></a></a>
-                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Done</a>
-                            <div id="modal1" class="modal">
-                                <div class="modal-content black-text">
-                                    <h4>Task Completed!</h4>
-                                    <h5><em>I have successfully completed the tasks</em></h5>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="{{ url_for('delete_task', task_id=task._id) }}" class="modal-close waves-effect waves-green btn-flat">Done</a>
-                                </div>
+<div class="tasks-card row z-depth-1 blue-grey lighten-5">
+    <div class="col s12">
+        <ul class="collapsible expandable popout">
+            {% for task in tasks %}
+            <li>
+                <!-- tasks display header -->
+                <div class="collapsible-header blue darken-4 white-text">
+                    <div class="col s6 m8 l10 task-company">
+                        {{ task.company_name }}
+                        {% if task.urgent == "on" %}
+                        <i class="material-icons small white-text task-icons" data-tooltip="URGENT!">new_releases</i>
+                        {% endif %}
+                    </div>
+                    <div class="col s6 m4 l2">
+                        {% if session.user|lower == task.created_by|lower %}
+                        <a href="{{ url_for('edit_task', task_id=task._id) }}"><i class="material-icons small white-text task-icons">border_color</i></a></a>
+                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Done</a>
+                        <div id="modal1" class="modal">
+                            <div class="modal-content black-text">
+                                <h4>Task Completed!</h4>
+                                <h5><em>I have successfully completed the tasks</em></h5>
                             </div>
-                            {% endif %}
+                            <div class="modal-footer">
+                                <a href="{{ url_for('delete_task', task_id=task._id) }}" class="modal-close waves-effect waves-green btn-flat">Done</a>
+                            </div>
                         </div>
+                        {% endif %}
                     </div>
+                </div>
 
-                    <div class="collapsible-body white">
-                        <div class="row">
-                            <div class="col s12 m6"><span>Job Title: </span>{{ task.job_title }}</div></div>
-                        <div class="row">
-                            <div class="col s12 m6"><span>Job Description: </span>{{ task.job_description }}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6"><span>Quantity: </span>{{ task.quantity }}</div>
-                            <div class="col s12 m6"><span>Materials: </span>{{ task.materials }}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6"><span>Printing: </span>{{ task.printing }}</div>
-                            <div class="col s12 m6"><span>Finishing: </span>{{ task.finishing }}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6"><span>Delivery: </span>{{ task.delivery }}</div>
-                            <div class="col s12 m6"><span>Delivery Date: </span>{{ task.delivery_date }}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6"><span>Delivery Address: </span>{{ task.delivery_address }}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6"><span>Created by: </span>{{ task.created_by }}</div>
-                        </div>
+                <!-- tasks information -->
+                <div class="collapsible-body white">
+                    <div class="row">
+                        <div class="col s12 m6"><span>Job Title: </span>{{ task.job_title }}</div></div>
+                    <div class="row">
+                        <div class="col s12 m6"><span>Job Description: </span>{{ task.job_description }}</div>
                     </div>
-                </li>
-            {% endfor %}
-            </ul>
-        </div>
+                    <div class="row">
+                        <div class="col s12 m6"><span>Quantity: </span>{{ task.quantity }}</div>
+                        <div class="col s12 m6"><span>Materials: </span>{{ task.materials }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6"><span>Printing: </span>{{ task.printing }}</div>
+                        <div class="col s12 m6"><span>Finishing: </span>{{ task.finishing }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6"><span>Delivery: </span>{{ task.delivery }}</div>
+                        <div class="col s12 m6"><span>Delivery Date: </span>{{ task.delivery_date }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6"><span>Delivery Address: </span>{{ task.delivery_address }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6"><span>Created by: </span>{{ task.created_by }}</div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
     </div>
+</div>
 
 {% endblock %}

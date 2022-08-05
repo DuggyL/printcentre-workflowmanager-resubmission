@@ -1,6 +1,7 @@
 <h1><b>Printcentre Workflow Manager Project Resubmission</b></h1>
 
 [View the live project here.](https://printcentre-workflowmanager.herokuapp.com/)
+[Github link of previous failed milestone project 3 submission.](https://github.com/DuggyL/workflow-milestone-project-3/)
 
 This Python and Data-Centric Development project aims to design a simple task manager for Printcentre Wales (my current employer), a commercial printing company. 
 
@@ -51,10 +52,19 @@ The reason I chose these 2 combinations of colours for my project is to keep the
     -   This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button.
     -   The navigation bar displays different links depending on whether the user is logged in, logged out.
 
+<img src=images/mobile-nav.png>
+
 -   ### Home Page
     -   Tasks display on the landing page. Users can interact with the collapsible to see more in-depth details of the work instruction.
     -   Unregistered and logout do not have edit or delete button available to them but can still interact with work instructions collapsible.  
     -   Only users who created the task can see buttons that allow users to edit or delete.
+
+<img src=images/add-task.png>
+
+-   ### Add Task Page
+    -   Allow users to add to the database and display created tasks on the main page, users can cancel the adding by clicking on the cancel button.
+    -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
+    -   It uses a combination of 2 mongo databases (Tasks and Customers).
 
 <img src=images/edit-task.png>
 
@@ -63,30 +73,25 @@ The reason I chose these 2 combinations of colours for my project is to keep the
     -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
     -   The previous value will fill the form, avoiding the need for users to re-input the data. 
 
-<img src=images/add-task.png>
-
--   ### Add Task Page
-    -   Allow users to add to the database and display created tasks on the main page, users can cancel the adding by clicking on the cancel button.
-    -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
-    -   It uses a combination of PSQL (containing customer database) and mongo database (where tasks will be saved to).
-
 <img src=images/customers.png>
 
 -   ### Customers Page
-    -   Table display list of existing customers
-    -   Users can add/ delete customers to or from the database 
+    -   Table display list of existing customers.
+    -   Search function available at the top if users want to search specific customer.
+    -   Clicking on "Add Customer" button to send users directly to add customer page.
 
 <img src=images/add-customer.png>
 
 -   ### Add Customer Page
-    -   Table display list of existing customers
-    -   Users can add/ delete customers to or from the database 
+    -   Allow users to add to the database and display created customer on the customers page, listed as table. Users can cancel by clicking on the cancel button.
+    -   Clicking on both cancel and submit buttons will bring the user back to the customers display page.
 
 <img src=images/edit-customer.png>
 
 -   ### Edit Customer Page
-    -   Table display list of existing customers
-    -   Users can add/ delete customers to or from the database 
+    -   Edit customer page allows users to edit the customers database, users can cancel the edit by clicking on the cancel button.
+    -   Clicking on both cancel and submit buttons will bring the user back to the customers display page.
+    -   The previous value will fill the form, avoiding the need for users to re-input the data. 
 
 <img src=images/profile.png>
 
@@ -109,6 +114,10 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
     -   Form validation has been added to every form to ensure all required information is included before submission.
     -   If incorrect data is input a warning red line indicates the data invalid i.e no letters in strictly number field, minimum and maximum character depend on expected data.
 
+<img src=images/log-in-error.png>
+
+<img src=images/defensive-wrong-input.png>
+
 -   ### Unauthorised Page
     -   Unregister or logged out users cannot access to add tasks, profiles or customer page
 
@@ -116,12 +125,9 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
 
 ## Future Features
 -   I would like to add more features to the profile page, like tasks history.
--   Add search and edit function to customer page
 -   The ability for users to change their username and password
 -   Improvement of user experience to task collapsible 
 -   The ability to add comments to a task is collapsible while the task is still active
-
-<img src=images/log-in-error.png>
 
 ## Technologies Used
 

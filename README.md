@@ -46,26 +46,34 @@ The reason I chose these 2 combinations of colours for my project is to keep the
 
 ## Responsive Design, Features & CRUD Operations
 
-<details>
+### CRUD Operations
+Using the CRUD's four basic functions (create, read, update and delete), here are the design and features:
+
+-   The ability to create tasks and customer database
+-   The ability to read/check work instructions, and customer information
+-   The ability to update/edit jobs work instructions
+-   The ability to delete tasks, assignments and schedule
+
 <img src=images/homepage.png>
-</details>
 
 -   ### Navigation Bar
     -   Featured on all pages, the full responsive navigation bar includes links to the Logo, tasks, add tasks, add customer, log in and register page and is identical on each page to allow for easy navigation.
-    -   This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button.
+    -   Navigation bar will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button.
     -   The navigation bar displays different links depending on whether the user is logged in, logged out.
 
 <img src=images/mobile-nav.png>
 
 -   ### Home Page
     -   Tasks display on the landing page. Users can interact with the collapsible to see more in-depth details of the work instruction.
-    -   Unregistered and logout do not have edit or delete button available to them but can still interact with work instructions collapsible.  
-    -   Only users who created the task can see buttons that allow users to edit or delete.
+    -   Unregistered and logout users do not have edit or delete button/icon available to them but can still interact with work instructions collapsible.  
+    -   Only users who created the task can see buttons that allow users to edit or done.
 
 <img src=images/add-task.png>
 
+<img src=images/add-task-mobile.png>
+
 -   ### Add Task Page
-    -   Allow users to add to the database and display created tasks on the main page, users can cancel the adding by clicking on the cancel button.
+    -   Allow users to add to the database and display created tasks on the home page, users can cancel the adding by clicking on the cancel button.
     -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
     -   It uses a combination of 2 mongo databases (Tasks and Customers).
 
@@ -74,40 +82,32 @@ The reason I chose these 2 combinations of colours for my project is to keep the
 -   ### Edit Tasks Page
     -   Edit task page allows users to edit the tasks database, users can cancel the edit by clicking on the cancel button.
     -   Clicking on both cancel and submit buttons will bring the user back to the task display page.
-    -   The previous value will fill the form, avoiding the need for users to re-input the data. 
+    -   The previous data value will automatic fill the form, avoiding the need for users to re-input the data. 
 
 <img src=images/customers.png>
 
 -   ### Customers Page
     -   Table display list of existing customers.
-    -   Search function available at the top if users want to search specific customer.
+    -   Search function available at the top if users want to search for specific customer by customer's name or company's name.
     -   Clicking on "Add Customer" button to send users directly to add customer page.
 
 <img src=images/add-customer.png>
 
 -   ### Add Customer Page
-    -   Allow users to add to the database and display created customer on the customers page, listed as table. Users can cancel by clicking on the cancel button.
-    -   Clicking on both cancel and submit buttons will bring the user back to the customers display page.
+    -   Allow users to add to the database and display created customer on the customers page. Users can cancel by clicking on the cancel button.
+    -   Clicking on both cancel and submit buttons will bring the user back to the customers page.
 
 <img src=images/edit-customer.png>
 
 -   ### Edit Customer Page
     -   Edit customer page allows users to edit the customers database, users can cancel the edit by clicking on the cancel button.
-    -   Clicking on both cancel and submit buttons will bring the user back to the customers display page.
-    -   The previous value will fill the form, avoiding the need for users to re-input the data. 
+    -   Clicking on both cancel and submit buttons will bring the user back to the customers page.
+    -   The previous data value will automatic fill the form, avoiding the need for users to re-input the data. 
 
 <img src=images/profile.png>
 
 -   ### Profile Page
     -   A page is dedicated to the user when they are logged in. Currently, blank and more features are implemented at later project stages.
-
-### CRUD Operations
-Using the CRUD's four basic functions (create, read, update and delete), here are the design and features:
-
--   The ability to create tasks and customer database
--   The ability to read/check work instructions, and customer information
--   The ability to update/edit jobs work instructions
--   The ability to delete tasks, assignments and schedule
 
 ### Defensive Design
 
@@ -119,7 +119,13 @@ Using the CRUD's four basic functions (create, read, update and delete), here ar
 
 <img src=images/log-in-error.png>
 
+-   ### Success and Error Flash message
+    -   Flash message will appear at the of the page in response to user activity. For example, if you input the wrong password, an error message will appear letting user know the reason for the error. (Green for success and red for error).
+
 <img src=images/defensive-wrong-input.png>
+
+-   ### Input Validation
+    -   Some of the forms have input restriction, i.e maximum and minimum characters length, integer only etc. The input field will turn red if the data input are not acceptable and green if the data input are ok. A small message will appear below active input form to let users know what type data it required.
 
 -   ### Unauthorised Page
     -   Unregister or logged out users cannot access to add tasks, profiles or customer page
@@ -169,7 +175,7 @@ The JSHint Lighthouse, W3C Markup Validator and W3C CSS Validator Services were 
 
 ### Testing User Stories from User Experience (UX) Section
 
--   #### ### New, Returning and Frequent Visitor Goals
+-   #### New, Returning and Frequent Visitor Goals
 
     1. As a User, I want to register and create a user profile.
 
